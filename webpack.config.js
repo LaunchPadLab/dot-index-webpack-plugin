@@ -1,7 +1,7 @@
 const path = require('path')
 const root = process.cwd()
-const CustomResolver = require('./custom-resolver')
-const webpack = require('webpack')
+const DotIndexResolverPlugin = require('./dot-index-resolver-plugin')
+const DotIndexGeneratorPlugin = require('./dot-index-generator-plugin')
 
 module.exports = {
   entry: path.resolve(root, './src'),
@@ -11,7 +11,12 @@ module.exports = {
   },
   resolve: {
     plugins: [
-      new CustomResolver()
+      new DotIndexResolverPlugin()
     ]
-  }
+  },
+  plugins: [
+    new DotIndexGeneratorPlugin({
+      path: path.join(__dirname, 'src')
+    })
+  ]
 }
