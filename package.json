@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "main": "src/index.js",
+  "bin": {
+    "generate-dot-index-files": "./src/generate-dot-index-files.js"
+  },
   "scripts": {
     "start": "yarn run build",
     "build": "webpack --config webpack.config.js",
