@@ -28,13 +28,12 @@ test('Generates dot index files', end => {
     const modules = stats.toJson().modules
     expect(modules.length).toEqual(4)
     const indexSource = modules[0].source
-    console.log(indexSource)
-    expect(indexSource).toMatchSnapshot() //.toEqual('export { default as myComponent } from \'./MyComponent\'\nexport { default as myFunction } from \'./myFunction\'\n')
+    expect(indexSource).toMatchSnapshot()
     end()
   })
 })
 
 afterAll(() => {
-  // fs.removeSync(to('./test-input/.index.js'))
+  fs.removeSync(to('./test-input/.index.js'))
   fs.removeSync(to('./test-output'))
 })
