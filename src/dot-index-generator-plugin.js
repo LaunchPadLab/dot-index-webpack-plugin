@@ -18,7 +18,7 @@ function createDotIndexFiles (rootPath) {
   const to = relPath => path.join(rootPath, relPath)
   // Delete .index.js if it exists
   try {
-    fs.unlinkSync(to('.index.js'))
+    fs.removeSync(to('.index.js'))
   } catch (e) {} // eslint-disable-line no-empty
   const { files, directories } = getFilesAndDirectories(rootPath)
   // Create file
