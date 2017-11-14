@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 const createDotIndexFiles = require('./utils/create-dot-index-files')
 
 function main (args=process.argv.slice(2)) {
