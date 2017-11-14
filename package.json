@@ -1,5 +1,5 @@
 {
-  "name": "plugin-test",
+  "name": "webpack-dot-index",
   "version": "1.0.0",
   "description": "",
   "main": "src/index.js",
