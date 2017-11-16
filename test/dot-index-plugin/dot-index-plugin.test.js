@@ -1,6 +1,6 @@
 const webpack = require('webpack')
 const path = require('path')
-const { DotIndexResolverPlugin, DotIndexGeneratorPlugin } = require('../../src')
+const DotIndexPlugin = require('../../src')
 const fs = require('fs-extra')
 
 const to = relPath => path.resolve(__dirname, relPath)
@@ -14,12 +14,10 @@ test('Generates dot index files', end => {
       filename: '[name].js'
     },
     resolve: {
-      plugins: [
-        new DotIndexResolverPlugin()
-      ]
+      mainFiles: ['index', '.index'],
     },
     plugins: [
-      new DotIndexGeneratorPlugin({ path: to('./test-input') })
+      new DotIndexPlugin({ path: to('./test-input') })
     ]
   }
 
@@ -31,6 +29,7 @@ test('Generates dot index files', end => {
     expect(indexFileContent).toMatchSnapshot()
     end()
   })
+
 })
 
 afterAll(() => {

@@ -1,4 +1,1 @@
-const DotIndexGeneratorPlugin = require('./dot-index-generator-plugin')
-const DotIndexResolverPlugin = require('./dot-index-resolver-plugin')
-
-module.exports = { DotIndexGeneratorPlugin, DotIndexResolverPlugin }
+module.exports = require('./dot-index-plugin')

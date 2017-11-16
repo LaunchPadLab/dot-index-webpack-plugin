@@ -11,7 +11,6 @@ DotIndexPlugin.prototype.apply = function (compiler) {
   const rootPath = this.options.path
   if (!rootPath) throw new Error('DotIndexGeneratorPlugin requires "path" option')
   function recompile () {
-    createDotIndexFiles(rootPath)
     return compiler.run(() => {})
   }
   compiler.plugin('watch-run', (compilation, callback) => {
@@ -25,6 +24,10 @@ DotIndexPlugin.prototype.apply = function (compiler) {
       this.initialized = true
       callback()
     })
+  })
+  compiler.plugin('run', (compilation, callback) => {
+    createDotIndexFiles(rootPath)
+    callback()
   })
 }
 
