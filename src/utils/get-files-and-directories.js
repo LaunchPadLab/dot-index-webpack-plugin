@@ -1,14 +1,10 @@
 const fs = require('fs-extra')
 
-function isDirectory (fileName) {
-  return !fileName.includes('.')
-}
-
 function getFilesAndDirectories (rootPath) {
   const allFiles = fs.readdirSync(rootPath)
   return {
-    files: allFiles.filter(file => !isDirectory(file)),
-    directories: allFiles.filter(isDirectory)
+    files: allFiles.filter(file => file.includes('.js')),
+    directories: allFiles.filter(file => !file.includes('.')),
   }
 }
 

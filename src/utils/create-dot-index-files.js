@@ -5,18 +5,23 @@ const getFilesAndDirectories = require('./get-files-and-directories')
 
 function createDotIndexFiles (rootPath) {
   const to = relPath => path.join(rootPath, relPath)
-  // Delete .index.js if it exists
-  try {
-    fs.removeSync(to('.index.js'))
-  } catch (e) {} // eslint-disable-line no-empty
   const { files, directories } = getFilesAndDirectories(rootPath)
-  // Create file
-  if (!files.includes('index.js')) {
-    const indexFileContent = createIndexFileContent([ ...files, ...directories ])
-    fs.writeFileSync(to('.index.js'), indexFileContent)
+  if (files.includes('index.js')) {
+    if (files.includes('.index.js')) fs.removeSync(to('.index.js'))
+  } else {
+    const existingContent = attemptRead(to('.index.js'))
+    const newContent = createIndexFileContent([ ...files, ...directories ])
+    if (newContent !== existingContent) fs.writeFileSync(to('.index.js'), newContent)
   }
-  // Recurse
   directories.forEach(dir => createDotIndexFiles(to(dir)))
+}
+
+function attemptRead (file) {
+  try {
+    return fs.readFileSync(file).toString()
+  } catch (e) {
+    return ''
+  }
 }
 
 module.exports = createDotIndexFiles
