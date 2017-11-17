@@ -18,7 +18,7 @@ function createDotIndexFiles (rootPath) {
 
 function attemptRead (file) {
   try {
-    return fs.readFileSync(file).toString()
+    return fs.readFileSync(file, 'utf8')
   } catch (e) {
     return ''
   }
