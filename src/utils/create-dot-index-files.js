@@ -6,6 +6,8 @@ const getFilesAndDirectories = require('./get-files-and-directories')
 function createDotIndexFiles (rootPath) {
   const to = relPath => path.join(rootPath, relPath)
   const { files, directories } = getFilesAndDirectories(rootPath)
+  // console.log(files, directories)
+  // return
   if (files.includes('index.js')) {
     if (files.includes('.index.js')) fs.removeSync(to('.index.js'))
   } else {

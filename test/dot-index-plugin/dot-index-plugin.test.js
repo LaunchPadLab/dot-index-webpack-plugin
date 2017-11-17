@@ -13,6 +13,14 @@ test('Generates dot index files', end => {
       path: to('./test-output'),
       filename: '[name].js'
     },
+    module: {
+      rules: [
+        {
+          test: /\.js$/,
+          use: 'babel-loader',
+        },
+      ],
+    },
     resolve: {
       mainFiles: ['index', '.index'],
     },
