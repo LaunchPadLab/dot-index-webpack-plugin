@@ -9,7 +9,7 @@ function DotIndexPlugin (options={}) {
 
 DotIndexPlugin.prototype.apply = function (compiler) {
   const rootPath = this.options.path
-  if (!rootPath) throw new Error('DotIndexGeneratorPlugin requires "path" option')
+  if (!rootPath) throw new Error('DotIndexPlugin requires "path" option')
   function recompile () {
     return compiler.run(() => {})
   }
