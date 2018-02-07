@@ -1,0 +1,12 @@
+language: node_js
+node_js:
+- '8'
+notifications:
+  email: false
+deploy:
+  provider: npm
+  email: davidstoreypickart@gmail.com
+  api_key:
+    secure: 0zAV3Qk8lbFd0DHLfTJ65bhgiHc3JGGURklagRLYX73KYitfoSAJHEmk5PK8Gty9quGLJi+KBbfsav4kubsl8AXaIwSa2vXza8hhxLxXUimywLNfIYrhdmkt1p2OQf2tl68RscLPbQkbqTGdjTglJNCpsJosw2uXR0yFEAtJ2OKhFEzNsFYfIK+wJprJxKGoy0u6LBo0aQvBFv0xJE8Secfkjqzx/OAMIKbhTRO1fhxKcYHmwXczF9psU87jJ2xYL68fITucaMwRpD+KYCKgnn8BFVmp35veA8qPU9kvf26jdgcqq/Z+1hADESnqXG3PJ0/51MOPDk3KR4Bw7tmnKpnfY50iFf5D0wKjaUtytfub58GWquiw+uy5cOgxjG/M+w5LrgViiwo3wEHMIg+uY9P0wZHUvTKjeUpZTGUOzrRiX1lvl6gie8GC9sFF5qmiuMM3qTMRYkJ6kF1gTqtyhkM4mpshJeKRwaDpS2ODvVtbmX2FV9SJBxDqtlkSlTourxIPXIKUELg8uYanFo+0P4+JSNP+oOyqcWPcpPE/SveX3lH0Zbkbwy+dF06V8VtibqauZwcA26djYUEFrGyMj086Hc6WGVZJnIqVGrpjhQOo77f0hQtzHF70bGJaoo5ZMkqKZ2P3eVHBjqJlEj5YnUgYY0YzUVjj3ljFJlrS4ZA=
+  on:
+    branch: master
