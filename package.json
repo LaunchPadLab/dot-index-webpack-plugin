@@ -18,13 +18,20 @@
     "fs-extra": "^4.0.2",
     "lodash.camelcase": "^4.3.0"
   },
+  "jest": {
+    "testEnvironment": "node"
+  },
   "devDependencies": {
     "@launchpadlab/babel-preset": "^1.0.0",
     "@launchpadlab/eslint-config": "^2.1.0",
+    "babel-core": "^6.26.0",
     "babel-eslint": "^8.0.1",
-    "babel-loader": "^7.1.2",
+    "babel-loader": "^7.1.4",
     "eslint": "^4.10.0",
     "jest": "^21.2.1",
-    "webpack": "^3.8.1"
+    "webpack": "^4.0.0"
+  },
+  "peerDependencies": {
+    "webpack": "^4.0.0"
   }
 }

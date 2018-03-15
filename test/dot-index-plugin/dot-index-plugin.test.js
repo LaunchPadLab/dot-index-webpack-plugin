@@ -33,7 +33,7 @@ test('Generates dot index files', end => {
     expect(err).toEqual(null)
     const modules = stats.toJson().modules
     expect(modules.length).toEqual(4)
-    const indexFileContent = modules[0].source
+    const indexFileContent = modules.pop().source
     expect(indexFileContent).toMatchSnapshot()
     end()
   })
