@@ -13,7 +13,7 @@ DotIndexPlugin.prototype.apply = function (compiler) {
   function recompile () {
     return compiler.run(() => {})
   }
-  compiler.plugin('watch-run', (compilation, callback) => {
+  compiler.hooks.watchRun.tapAsync('DotIndexPlugin', (compilation, callback) => {
     createDotIndexFiles(rootPath)
     // Only initialize once
     if (this.initialized) return callback()
@@ -25,7 +25,7 @@ DotIndexPlugin.prototype.apply = function (compiler) {
       callback()
     })
   })
-  compiler.plugin('run', (compilation, callback) => {
+  compiler.hooks.run.tapAsync('DotIndexPlugin', (compilation, callback) => {
     createDotIndexFiles(rootPath)
     callback()
   })
