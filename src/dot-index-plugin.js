@@ -8,13 +8,13 @@ function DotIndexPlugin (options={}) {
 }
 
 DotIndexPlugin.prototype.apply = function (compiler) {
-  const rootPath = this.options.path
+  const { path: rootPath, ...options } = this.options
   if (!rootPath) throw new Error('DotIndexPlugin requires "path" option')
   function recompile () {
     return compiler.run(() => {})
   }
   compiler.hooks.watchRun.tapAsync('DotIndexPlugin', (compilation, callback) => {
-    createDotIndexFiles(rootPath)
+    createDotIndexFiles(rootPath, options)
     // Only initialize once
     if (this.initialized) return callback()
     createMonitor(rootPath, monitor => {
@@ -26,7 +26,7 @@ DotIndexPlugin.prototype.apply = function (compiler) {
     })
   })
   compiler.hooks.run.tapAsync('DotIndexPlugin', (compilation, callback) => {
-    createDotIndexFiles(rootPath)
+    createDotIndexFiles(rootPath, options)
     callback()
   })
 }

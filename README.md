@@ -59,6 +59,24 @@ module.exports = {
 }
 ```
 
+## Custom export names
+
+In some cases, you may want to customize the formatting of the generated export names.
+In this case, you can pass in a custom `formatExports` function to the plugin constructor:
+
+```js
+  plugins: [
+    new DotIndexPlugin({
+      path: path.join(__dirname, '../src'),
+      formatExports: (filename, rootPath) => filename.toUpperCase()
+    })
+  ],
+
+  // ... will result in ...
+
+  export { default as MYCOMPONENT } from './MyComponent'
+```
+
 ## Limitations
 
 This plugin hijacks the default "watch" functionality in order to watch for newly added files.

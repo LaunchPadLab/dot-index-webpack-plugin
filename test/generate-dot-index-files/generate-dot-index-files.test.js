@@ -15,6 +15,14 @@ test('Generates dot index file correctly', () => {
   expect(indexFileContent).toMatchSnapshot()
 })
 
-afterAll(() => {
+test('Accepts formatExports argument', () => {
+  const toUpperCase = filename => filename.replace(/-/g, '').toUpperCase()
+  generateDotIndexFiles([ to('./test-input'), { formatExports: toUpperCase } ])
+  expect(fs.existsSync(to('./test-input/.index.js'))).toEqual(true)
+  const indexFileContent = fs.readFileSync(to('./test-input/.index.js')).toString()
+  expect(indexFileContent).toMatchSnapshot()
+})
+
+afterEach(() => {
   fs.removeSync(to('./test-input/.index.js'))
 })
