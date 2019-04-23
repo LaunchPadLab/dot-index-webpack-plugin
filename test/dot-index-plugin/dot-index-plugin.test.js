@@ -40,7 +40,42 @@ test('Generates dot index files', end => {
 
 })
 
-afterAll(() => {
+test('Accepts formatExports argument', end => {
+  const toUpperCase = filename => filename.replace(/-/g, '').toUpperCase()
+  const config = {
+    entry: to('./test-input'),
+    output: {
+      path: to('./test-output'),
+      filename: '[name].js'
+    },
+    module: {
+      rules: [
+        {
+          test: /\.js$/,
+          use: 'babel-loader',
+        },
+      ],
+    },
+    resolve: {
+      mainFiles: ['index', '.index'],
+    },
+    plugins: [
+      new DotIndexPlugin({ path: to('./test-input'), formatExports: toUpperCase })
+    ]
+  }
+
+  webpack(config, (err, stats) => {
+    expect(err).toEqual(null)
+    const modules = stats.toJson().modules
+    expect(modules.length).toEqual(4)
+    const indexFileContent = modules[0].source
+    expect(indexFileContent).toMatchSnapshot()
+    end()
+  })
+
+})
+
+afterEach(() => {
   fs.removeSync(to('./test-input/.index.js'))
   fs.removeSync(to('./test-output'))
 })
