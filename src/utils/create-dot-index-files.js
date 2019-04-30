@@ -13,7 +13,7 @@ function createDotIndexFiles (rootPath, options={}) {
     const newContent = createIndexFileContent([ ...files, ...directories ], rootPath, options)
     if (newContent !== existingContent) fs.writeFileSync(to('.index.js'), newContent)
   }
-  directories.forEach(dir => createDotIndexFiles(to(dir)))
+  directories.forEach(dir => createDotIndexFiles(to(dir), options))
 }
 
 function attemptRead (file) {
