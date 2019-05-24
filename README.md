@@ -80,5 +80,5 @@ In this case, you can pass in a custom `formatExports` function to the plugin co
 ## Limitations
 
 This plugin hijacks the default "watch" functionality in order to watch for newly added files.
-This may lead to some strange behavior- in particular, when overwriting a dot index file with an index file, a restart of the compilar may be necessary.
+This may lead to some strange behavior- in particular, when overwriting a dot index file with an index file, a restart of the compiler may be necessary.
 
