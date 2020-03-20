@@ -16,7 +16,8 @@
   "license": "ISC",
   "dependencies": {
     "fs-extra": "^4.0.2",
-    "lodash.camelcase": "^4.3.0"
+    "lodash.camelcase": "^4.3.0",
+    "lodash.update": "^4.3.0"
   },
   "jest": {
     "testEnvironment": "node"

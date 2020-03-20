@@ -21,9 +21,6 @@ test('Generates dot index files', end => {
         },
       ],
     },
-    resolve: {
-      mainFiles: ['index', '.index'],
-    },
     plugins: [
       new DotIndexPlugin({ path: to('./test-input') })
     ]
@@ -55,9 +52,6 @@ test('Accepts formatExports argument', end => {
           use: 'babel-loader',
         },
       ],
-    },
-    resolve: {
-      mainFiles: ['index', '.index'],
     },
     plugins: [
       new DotIndexPlugin({ path: to('./test-input'), formatExports: toUpperCase })
