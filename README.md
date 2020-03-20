@@ -26,35 +26,20 @@ This convention means that it's important that filenames match desired module na
 
 ## Usage
 
-To use this plugin in your project, two steps are necessary. First, in your webpack config, add a custom `mainFiles` value to your `resolve` option specifying that `.index.js` files can be used to resolve directories. Secondly, add an instance of the plugin to your `plugins` array, with a `path` option value specifying the root of the directory where you'd like your dot index files to be generated.
+To use this plugin in your project, add an instance of the plugin to your `plugins` array, with a `path` option value specifying the root of the directory where you'd like your dot index files to be generated.
 
 Example **webpack.config.js**:
 
 ```js
-
 const DotIndexPlugin = require('dot-index-webpack-plugin')
 
 module.exports = {
-  entry: [
-    ...
-  ],
-  output: {
-    ...
-  },
-  module: {
-    rules: [
-      ...
-    ]
-  },
-  resolve: {
-    // Fallback to .index files when resolving directories
-    mainFiles: ['index', '.index'], 
-  },
+  // ... other configuration ...
   plugins: [
     new DotIndexPlugin({
       // watch src/ folder for changes
       path: path.join(__dirname, '../src'),
-    })
+    }),
   ],
 }
 ```
@@ -76,9 +61,3 @@ In this case, you can pass in a custom `formatExports` function to the plugin co
 
   export { default as MYCOMPONENT } from './MyComponent'
 ```
-
-## Limitations
-
-This plugin hijacks the default "watch" functionality in order to watch for newly added files.
-This may lead to some strange behavior- in particular, when overwriting a dot index file with an index file, a restart of the compiler may be necessary.
-

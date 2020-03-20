@@ -1,4 +1,5 @@
 const createDotIndexFiles = require('./utils/create-dot-index-files')
+const update = require('lodash.update')
 
 function DotIndexPlugin(options = {}) {
   this.options = options
@@ -27,6 +28,11 @@ DotIndexPlugin.prototype.apply = function(compiler) {
   // Hook into both normal and watch mode
   compiler.hooks.run.tapAsync('DotIndexPlugin', onRun)
   compiler.hooks.watchRun.tapAsync('DotIndexPlugin', onRun)
+  // Add .index to mainFiles
+  update(compiler, 'options.resolve.mainFiles', (mainFiles = []) => [
+    ...mainFiles,
+    '.index',
+  ])
 }
 
 module.exports = DotIndexPlugin
