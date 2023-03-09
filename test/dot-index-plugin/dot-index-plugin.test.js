@@ -23,7 +23,7 @@ test('Generates dot index files', end => {
     },
     plugins: [
       new DotIndexPlugin({ path: to('./test-input') })
-    ],
+    ]
   }
 
   webpack(config, (err, stats) => {
