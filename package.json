@@ -1,6 +1,6 @@
 {
   "name": "dot-index-webpack-plugin",
-  "version": "5.2.0",
+  "version": "5.3.0",
   "description": "",
   "main": "src/index.js",
   "bin": {
@@ -33,6 +33,6 @@
     "webpack": "^4.0.0"
   },
   "peerDependencies": {
-    "webpack": "^4.0.0"
+    "webpack": "^4.0.0 || ^5.0.0"
   }
 }
