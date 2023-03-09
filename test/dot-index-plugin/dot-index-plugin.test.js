@@ -40,6 +40,7 @@ test('Generates dot index files', end => {
 test('Accepts formatExports argument', end => {
   const toUpperCase = filename => filename.replace(/-/g, '').toUpperCase()
   const config = {
+    mode: 'production',
     entry: to('./test-input'),
     output: {
       path: to('./test-output'),
