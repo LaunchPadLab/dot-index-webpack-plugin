@@ -1,5 +1,5 @@
 const createDotIndexFiles = require('./utils/create-dot-index-files')
-const update = require('lodash.update')
+const { update } = require('lodash')
 
 function DotIndexPlugin(options = {}) {
   this.options = options
