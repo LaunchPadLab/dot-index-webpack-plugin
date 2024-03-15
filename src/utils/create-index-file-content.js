@@ -1,4 +1,4 @@
-const camelcase = require('lodash.camelcase')
+const { camelCase } = require('lodash')
 
 function stripExtension (fileName) {
   return fileName.split('.')[0]
@@ -9,7 +9,7 @@ function isKebabCase (fileName) {
 }
 
 function defaultFormatExports (fileName, rootPath) {
-  return isKebabCase(fileName) ? camelcase(fileName) : fileName
+  return isKebabCase(fileName) ? camelCase(fileName) : fileName
 }
 
 function createIndexFileContent (files=[], rootPath, { formatExports=defaultFormatExports }={}) {
